@@ -4,7 +4,8 @@
   "description": "A visualization project for Git",
   "main": "index.js",
   "scripts": {
-    "parse": "ts-node ./scripts/index.ts",
+    "file-parser": "ts-node ./scripts/file-parser.ts",
+    "commit-parser": "ts-node ./scripts/commit-parser.ts",
     "start": "webpack-dev-server --config ./vis/webpack.config.js --mode development"
   },
   "repository": {
