@@ -1,8 +1,7 @@
-const Blamer = require('blamer');
 import path from 'path';
 import glob from 'glob';
 import { CommitRecordItem } from './common';
-import { getTopContributor } from './utils';
+import { getTopContributor, getBlameInfo, getOwnerList } from './utils';
 
 interface FileListItem {
   name: string;
@@ -24,19 +23,19 @@ async function parse() {
   const basePath = path.resolve(__dirname, '../../desktop');
   const topContributorResult = await getTopContributor(basePath, 10);
 
-  // glob(
-  //   '**/*.+(ts|tsx)',
-  //   {
-  //     cwd: basePath,
-  //     root: basePath,
-  //     realpath: true
-  //   },
-  //   async (err, files) => {
-  //     const blamer = new Blamer();
-  //     const result = await blamer.blameByFile(files[0]);
-  //     console.log(result);
-  //   }
-  // );
+  glob(
+    '**/*.+(ts|tsx)',
+    {
+      cwd: basePath,
+      root: basePath,
+      realpath: true
+    },
+    async (err, files) => {
+      const result = await getBlameInfo(files[70]);
+      const ownerList = getOwnerList(result);
+      console.log(ownerList);
+    }
+  );
 }
 
 parse();
