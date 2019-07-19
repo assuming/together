@@ -22,13 +22,7 @@ interface ContributeMap {
 
 async function parse() {
   const basePath = path.resolve(__dirname, '../../desktop');
-
-  try {
-    const result = await getTopContributor(basePath, 10);
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
+  const topContributorResult = await getTopContributor(basePath, 10);
 
   // glob(
   //   '**/*.+(ts|tsx)',
