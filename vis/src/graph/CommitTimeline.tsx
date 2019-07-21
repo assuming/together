@@ -13,11 +13,16 @@ export default class CommitTimeline extends Component {
   width = this.WIDTH - 2 * this.margin;
   height = this.HEIGHT - 2 * this.margin;
 
+  timelineGraphHeight = 200;
+
   componentDidMount() {
     const canvas = d3.select('#commit-timeline');
-    const g = canvas
+    const container = canvas
       .append('g')
       .attr('transform', `translate(${this.margin}, ${this.margin})`);
+    const timelineGraph = container
+      .append('g')
+      .attr('transform', `translate(0, ${this.timelineGraphHeight})`);
 
     const startTimestamp = commitData[0].time;
     const endTimestamp = commitData[commitData.length - 1].time;
@@ -33,7 +38,8 @@ export default class CommitTimeline extends Component {
       .tickSize(4)
       .tickSizeOuter(0);
 
-    g.append('g')
+    container
+      .append('g')
       .attr('transform', `translate(0, 200)`)
       .attr('class', 'h-axis')
       .call(xAxis);
