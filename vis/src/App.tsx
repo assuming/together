@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { HashRouter, Route } from 'react-router-dom';
 
-const Span = styled.span`
-  color: blue;
-`;
+import CommitTimeline from './graph/CommitTimeline';
+
+const router = (
+  <HashRouter>
+    <Route path="/" exact component={CommitTimeline} />
+  </HashRouter>
+);
 
 class App extends Component {
   render() {
-    return <Span>App</Span>;
+    return <div id="app">{router}</div>;
   }
 }
 

@@ -21,7 +21,12 @@ interface FileListItem {
 
 async function parse() {
   const basePath = path.resolve(__dirname, '../../desktop');
-  // const topContributorResult = await getTopContributor(basePath, 10);
+
+  const topContributorResult = await getTopContributor(basePath, 1000);
+  saveJSON('top-contributor.json', topContributorResult);
+
+  const projectCommitRecordResult = await getCommitRecord(basePath);
+  saveJSON('project-commit-record.json', projectCommitRecordResult);
 
   glob(
     '**/*.+(ts|tsx)',
@@ -31,9 +36,8 @@ async function parse() {
       realpath: true
     },
     async (err, files) => {
-      // const commitRecord = await getC
       const list: FileListItem[] = [];
-      for (const filepath of files.slice(0, 100)) {
+      for (const filepath of files) {
         console.log(`->  ${filepath}`);
 
         const [contributorInfo, commitRecord, loc] = await Promise.all([

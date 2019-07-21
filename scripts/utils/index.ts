@@ -8,7 +8,7 @@ export async function getTopContributor(
 ): Promise<
   Array<{
     name: string;
-    commitCount: number;
+    count: number;
   }>
 > {
   return new Promise((resolve, reject) => {
@@ -27,7 +27,7 @@ export async function getTopContributor(
         const [countRawString, name] = item.split('\t');
         return {
           name,
-          commitCount: parseInt(countRawString)
+          count: parseInt(countRawString)
         };
       });
       resolve(topList.slice(0, n));
