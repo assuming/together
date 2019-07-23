@@ -4,12 +4,19 @@
     "target": "es5",
     "strict": true,
     "declaration": true,
-    "lib": ["es2017"],
+    "lib": [
+      "es2017",
+    ],
     "outDir": "../scripts-build",
     "esModuleInterop": true,
     "noImplicitAny": false,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
   },
-  "exclude": ["node_modules"],
-  "include": ["./"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "."
+  ]
 }
