@@ -26,6 +26,7 @@
     "d3": "^5.9.7",
     "glob": "^7.1.4",
     "linecount": "^1.0.1",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",

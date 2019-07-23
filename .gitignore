@@ -64,3 +64,4 @@ typings/
 dist
 scripts-build
 database
+database-secure
