@@ -4,10 +4,18 @@ import moment from 'moment';
 import { getContributorColor } from '../../utils/colors';
 import './index.less';
 
+// const usernameArray = ['马东升', 'madongsheng'];
+// const usernameArray = ['刘彤阳', 'liutongyang'];
+// const usernameArray = ['王明晓', 'ohmyxm'];
+// const usernameArray = ['陈思宇', 'Siyu Chen'];
+const usernameArray = ['陆爱松', 'luaisong'];
+// const usernameArray = ['王贺', 'wanghe.ustc'];
+// const usernameArray = ['李旸根本没有'];
+// const usernameArray = ['majunchen'];
+// const usernameArray = ['liyubei'];
+// const usernameArray = ['程亦直', 'chengyizhi'];
 let commitData: any[] = require('../../../../database-secure/project-commit-record.json');
-commitData = commitData.filter(
-  item => item.author === '王明晓' || item.author === 'ohmyxm'
-);
+commitData = commitData.filter(item => usernameArray.includes(item.author));
 const commitTimeMap = {};
 commitData.forEach(item => {
   const hour = moment(item.time * 1000).hour();
@@ -19,7 +27,8 @@ commitData.forEach(item => {
 });
 const commitTimeArray = Object.keys(commitTimeMap).map(key => ({
   hour: key,
-  count: commitTimeMap[key]
+  count: commitTimeMap[key],
+  author: usernameArray[0]
 }));
 
 export default class CommitPerUser extends Component {
@@ -60,9 +69,9 @@ export default class CommitPerUser extends Component {
       .range([0, this.width]);
     const timeAxis = d3
       .axisBottom(timeScale)
-      .ticks(24)
+      .ticks(12)
       .tickSize(0)
-      .tickPadding(10)
+      .tickPadding(15)
       .tickSizeOuter(0);
     timeAxisArea.call(timeAxis);
 
@@ -76,6 +85,7 @@ export default class CommitPerUser extends Component {
     const countAxis = d3
       .axisLeft(countScale)
       .ticks(2)
+      .tickPadding(10)
       .tickSize(-this.width)
       .tickSizeOuter(0);
     countAxisArea.call(countAxis);
@@ -91,8 +101,9 @@ export default class CommitPerUser extends Component {
       .attr('y', d => countScale(d.count))
       .attr('width', size)
       .attr('height', d => this.height - countScale(d.count))
-      .attr('fill', '#3338F0')
-      .attr('stroke', '#3338F0')
+      .attr('fill', d => getContributorColor(d.author).color)
+      .attr('stroke', d => getContributorColor(d.author).color)
+      .attr('stroke-width', 1.1)
       .attr('fill-opacity', 0.25);
   }
 
@@ -102,7 +113,7 @@ export default class CommitPerUser extends Component {
         style={{
           width: '100%',
           height: '100%',
-          backgroundColor: 'black'
+          backgroundColor: 'white'
         }}
       >
         <svg id="commit-per-user" width="100%" height="100%" />

@@ -9,45 +9,45 @@ export function getContributorColor(name: string) {
       break;
     case 'liutongyang':
     case '刘彤阳':
-      // color = '#AD33FF';
-      // opacity = 0.8;
+      color = '#AD33FF';
+      opacity = 0.8;
       break;
     case '陈思宇':
     case 'Siyu Chen':
-      // color = '#FF1414';
-      // opacity = 0.8;
+      color = '#FF1414';
+      opacity = 0.8;
       break;
     case '王明晓':
     case 'ohmyxm':
-      // color = '#3338F0';
-      // opacity = 0.8;
+      color = '#3338F0';
+      opacity = 0.8;
       break;
     case '陆爱松':
     case 'luaisong':
-      // color = '#1AFF00';
-      // opacity = 0.8;
+      color = '#31E33F';
+      opacity = 0.8;
       break;
     case 'wanghe.ustc':
     case '王贺':
-      // color = '#FFBB00';
-      // opacity = 0.8;
+      color = '#FFBB00';
+      opacity = 0.8;
       break;
     case '李旸根本没有':
-      // color = '#0FFFE7';
-      // opacity = 0.8;
+      color = '#0FFFE7';
+      opacity = 0.8;
       break;
     case '程亦直':
     case 'chengyizhi':
-      // color = '#FF00BB';
-      // opacity = 0.8;
+      color = '#FF00BB';
+      opacity = 0.8;
       break;
     case 'majunchen':
-      // color = '#05FF97';
-      // opacity = 0.8;
+      color = '#05FF97';
+      opacity = 0.8;
       break;
     case 'liyubei':
-      // color = '#0FFFE7';
-      // opacity = 0.8;
+      color = '#0FFFE7';
+      opacity = 0.8;
       break;
     default:
       break;
