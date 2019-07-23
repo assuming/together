@@ -3,13 +3,13 @@ import { HashRouter, Route } from 'react-router-dom';
 
 import CommitTimeline from './graph/CommitTimeline';
 import CommitPerUser from './graph/CommitPerUser';
-import StructureRing from './graph/StructureRing';
+import StructureRect from './graph/StructureRect';
 
 const router = (
   <HashRouter>
     <Route path="/" exact component={CommitTimeline} />
     <Route path="/per-user" exact component={CommitPerUser} />
-    <Route path="/structure-ring" exact component={StructureRing} />
+    <Route path="/structure-rect" exact component={StructureRect} />
   </HashRouter>
 );
 
