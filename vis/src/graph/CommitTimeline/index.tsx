@@ -5,7 +5,7 @@ import moment from 'moment';
 import { getContributorColor } from '../../utils/colors';
 import './index.less';
 
-let commitData: any[] = require('../../../../database-secure/project-commit-record.json');
+let commitData: any[] = require('../../../../database/commit-record.json');
 
 export default class CommitTimeline extends Component {
   padding: number = 50;

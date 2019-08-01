@@ -14,7 +14,7 @@ const usernameArray = ['陆爱松', 'luaisong'];
 // const usernameArray = ['majunchen'];
 // const usernameArray = ['liyubei'];
 // const usernameArray = ['程亦直', 'chengyizhi'];
-let commitData: any[] = require('../../../../database-secure/project-commit-record.json');
+let commitData: any[] = require('../../../../database/commit-record.json');
 commitData = commitData.filter(item => usernameArray.includes(item.author));
 const commitTimeMap = {};
 commitData.forEach(item => {

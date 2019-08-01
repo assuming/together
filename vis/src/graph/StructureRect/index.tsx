@@ -4,7 +4,7 @@ import moment from 'moment';
 import { getContributorColor } from '../../utils/colors';
 import './index.less';
 
-const structureData: any[] = require('../../../../database-secure/structure.json');
+const structureData: any[] = require('../../../../database/structure.json');
 const fileData = structureData[831];
 const commitRecord: any[] = fileData.commitRecord;
 const contributorInfo: any[] = fileData.contributorInfo;

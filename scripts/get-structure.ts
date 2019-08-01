@@ -1,13 +1,13 @@
 import path from 'path';
 import glob from 'glob';
 import {
-  getTopContributor,
   getContributorInfo,
   ContributorInfoItem,
   CommitRecordItem,
   getCommitRecord,
   getLOC
 } from './utils';
+import { basePath } from './utils/const';
 import { saveJSON } from './utils/database';
 
 interface FileListItem {
@@ -19,15 +19,7 @@ interface FileListItem {
   contributorInfo: ContributorInfoItem[];
 }
 
-async function parse() {
-  const basePath = path.resolve(__dirname, '../../desktop');
-
-  const topContributorResult = await getTopContributor(basePath, 1000);
-  saveJSON('top-contributor.json', topContributorResult);
-
-  const projectCommitRecordResult = await getCommitRecord(basePath);
-  saveJSON('project-commit-record.json', projectCommitRecordResult);
-
+async function getStructureAndSave() {
   glob(
     '**/*.+(ts|tsx)',
     {
@@ -60,4 +52,4 @@ async function parse() {
   );
 }
 
-parse();
+getStructureAndSave();

@@ -4,8 +4,6 @@
   "description": "A visualization project for Git",
   "main": "index.js",
   "scripts": {
-    "file-parser": "node ./scripts-build/file-parser.js",
-    "commit-parser": "node ./scripts-build/commit-parser.js",
     "start-scripts": "tsc -w -p ./scripts",
     "build-scripts": "tsc -p ./scripts",
     "start": "webpack-dev-server --config ./vis/webpack.config.js --mode development",
