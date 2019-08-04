@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
+import drawable from './drawable';
 
-import CommitTimeline from './graph/CommitTimeline';
-import CommitPerUser from './graph/CommitPerUser';
+// electron cloud
+import drawCloud from './graph/Cloud';
+const CloudGraph = drawable(drawCloud, {});
+
 import StructureRect from './graph/StructureRect';
 
 const router = (
   <HashRouter>
-    <Route path="/" exact component={CommitTimeline} />
-    <Route path="/per-user" exact component={CommitPerUser} />
+    <Route path="/cloud" exact component={CloudGraph} />
     <Route path="/structure-rect" exact component={StructureRect} />
   </HashRouter>
 );

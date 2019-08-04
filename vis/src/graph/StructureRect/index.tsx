@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import moment from 'moment';
 import { getContributorColor } from '../../utils/colors';
 import './index.less';
 
 const structureData: any[] = require('../../../../database/structure.json');
-const fileData = structureData[831];
+const fileData = structureData[448];
 const commitRecord: any[] = fileData.commitRecord;
 const contributorInfo: any[] = fileData.contributorInfo;
 
 export default class StructureRect extends Component {
-  padding: number = 80;
+  padding: number = 40;
   // canvas real size
   WIDTH: number = 0;
   HEIGHT: number = 0;
@@ -38,7 +37,10 @@ export default class StructureRect extends Component {
     // create the commit graph
     const commitTimeScale = d3
       .scaleTime()
-      .domain([new Date(1539745000 * 1000), new Date(1563783000 * 1000)])
+      .domain([
+        d3.min(commitRecord, d => d.time * 1000),
+        d3.max(commitRecord, d => d.time * 1000)
+      ])
       .range([0, this.width]);
     const commitAxis = d3
       .axisTop(commitTimeScale)
@@ -59,7 +61,7 @@ export default class StructureRect extends Component {
       .append('circle')
       .attr('cx', d => commitTimeScale(new Date(d.time * 1000)))
       .attr('cy', 0)
-      .attr('r', 3)
+      .attr('r', 2)
       .attr('fill', 'white')
       .attr('fill-opacity', 0.1)
       .attr('stroke', 'white')

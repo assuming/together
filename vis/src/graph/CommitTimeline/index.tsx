@@ -8,7 +8,7 @@ import './index.less';
 let commitData: any[] = require('../../../../database/commit-record.json');
 
 export default class CommitTimeline extends Component {
-  padding: number = 50;
+  padding: number = 20;
   // canvas real size
   WIDTH: number = 0;
   HEIGHT: number = 0;
@@ -48,7 +48,7 @@ export default class CommitTimeline extends Component {
       .range([0, this.width]);
     const dateAxis = d3
       .axisBottom(timeScale)
-      .ticks(d3.timeMonth)
+      .ticks(d3.timeYear)
       .tickSize(3)
       .tickSizeOuter(0);
     dateAxisArea.call(dateAxis);
@@ -73,11 +73,7 @@ export default class CommitTimeline extends Component {
       .enter()
       .append('rect')
       .attr('x', d => timeScale(d.time * 1000) - commitIndicatorLength / 2)
-      .attr('y', d =>
-        hourScale(
-          moment(d.time * 1000).hour() + moment(d.time * 1000).second() / 60
-        )
-      )
+      .attr('y', d => hourScale(getHour(d.time) + getSecond(d.time) / 60))
       .attr('width', commitIndicatorLength)
       .attr('height', commitIndicatorHeight)
       .attr('rx', 1.5)
@@ -98,4 +94,17 @@ export default class CommitTimeline extends Component {
       </div>
     );
   }
+}
+
+const TIMEZONE = 'America/Los_Angeles';
+// const TIMEZONE = 'Asia/Chongqing'
+function getHour(unixTimestamp: number): number {
+  return moment(unixTimestamp * 1000)
+    .tz(TIMEZONE)
+    .hour();
+}
+function getSecond(unixTimestamp: number): number {
+  return moment(unixTimestamp * 1000)
+    .tz(TIMEZONE)
+    .second();
 }
