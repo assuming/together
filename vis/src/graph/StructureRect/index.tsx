@@ -4,7 +4,7 @@ import { getContributorColor } from '../../utils/colors';
 import './index.less';
 
 const structureData: any[] = require('../../../../database/structure.json');
-const fileData = structureData[448];
+const fileData = structureData[340];
 const commitRecord: any[] = fileData.commitRecord;
 const contributorInfo: any[] = fileData.contributorInfo;
 
@@ -97,6 +97,7 @@ export default class StructureRect extends Component {
 
     const locScale = d3
       .scaleLinear()
+      .clamp(true)
       .domain([0, 1000])
       .range([0, this.width]);
     fileRectGraphArea
