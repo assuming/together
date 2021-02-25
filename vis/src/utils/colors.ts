@@ -27,11 +27,6 @@
 //       color = '#31E33F';
 //       opacity = 0.8;
 //       break;
-//     case 'wanghe.ustc':
-//     case '王贺':
-//       color = '#FFBB00';
-//       opacity = 0.8;
-//       break;
 //     case '李旸根本没有':
 //       color = '#0FFFE7';
 //       opacity = 0.8;
